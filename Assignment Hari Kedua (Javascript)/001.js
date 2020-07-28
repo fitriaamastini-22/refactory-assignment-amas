@@ -8,7 +8,7 @@ function reverse(data){
 
 function splice(data, idx, val){
 	let newdata = data.slice(0);
-    newdata.splice(idx, 0, val)
+    newdata.splice(idx, 0, val);
 	return newdata;
 }
 
