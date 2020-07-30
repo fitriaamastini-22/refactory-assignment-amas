@@ -1,0 +1,6 @@
+Item ID 1 : 30000 x 3 (Discount = 50% ) = 45000 
+Item ID 3 : 5000 x 2 (Discount = 50% ) = 5000 
+Item ID 4 : 400 x 6 (Discount = 50% ) = 1200 
+Total Items    : 3
+      Quantity : 11
+      Price    : 51200 ((Discount 50% )
