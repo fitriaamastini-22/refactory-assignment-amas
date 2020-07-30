@@ -1,16 +1,16 @@
 function fizzBuzz(num){
 	for( let i = 1; i <= num; i++){
     	if( i % 2 === 0 && i % 3 === 0){
-        	document.write("Fizz Buzz<br/>");
+        	console.log("Fizz Buzz");
         }
         else if( i % 2 === 0){
-        	document.write("Fizz<br/>");
+        	console.log("Fizz");
         }
         else if( i % 3 === 0){
-        	document.write("Buzz<br/>");
+        	console.log("Buzz");
         }
         else{
-        	document.write(i+"<br/>");
+        	console.log(i);
         }
     }
 }

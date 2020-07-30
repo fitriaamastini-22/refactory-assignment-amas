@@ -47,7 +47,6 @@ function caesarCipher(str, shift){
     return res;
 }
 
-document.write(caesarCipher("I love JavaScript!", 100)  ); 
-document.write("<br/>");
-document.write(caesarCipher("I love JavaScript!", -100)  ); 
-document.write("<br/>");
+console.log(caesarCipher("I love JavaScript!", 100)  ); 
+
+console.log(caesarCipher("I love JavaScript!", -100)  ); 

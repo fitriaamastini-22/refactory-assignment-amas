@@ -19,4 +19,4 @@ function maxCharacter(str){
     return sortable[0][0];
 }
 
-document.write(maxCharacter('Hello World')); 
+console.log(maxCharacter('Hello World')); 

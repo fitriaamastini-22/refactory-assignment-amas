@@ -23,21 +23,16 @@ function sum(data){
 }
 
 const data = new Array(1,2,3,4,5);
-document.write(indexOf(data, 3));
+console.log(indexOf(data, 3));
 
-document.write("<br/>");
-document.write(lastIndex(data));
+console.log(lastIndex(data));
 
-document.write("<br/>");
-document.write(includes(data, 6));
-document.write("<br/>");
-document.write(includes(data, 5));
+console.log(includes(data, 6));
 
-document.write("<br/>");
-document.write(fill(data, 3));
+console.log(includes(data, 5));
 
-document.write("<br/>");
-document.write(join(data, '-'));
+console.log(fill(data, 3));
 
-document.write("<br/>");
-document.write(sum(data));
+console.log(join(data, '-'));
+
+console.log(sum(data));

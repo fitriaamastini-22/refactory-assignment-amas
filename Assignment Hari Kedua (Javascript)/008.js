@@ -24,10 +24,10 @@ function anagram(str1, str2){
     }
 }
 
-document.write(anagram('hello world', 'world hello') ); 
-document.write("<br/>");
-document.write(anagram('hellow world', 'hello there') ); 
-document.write("<br/>");
-document.write(anagram('hellow world', 'hello there!') ); 
+console.log(anagram('hello world', 'world hello') ); 
+
+console.log(anagram('hellow world', 'hello there') ); 
+
+console.log(anagram('hellow world', 'hello there!') ); 
 //document.write("<br/>");
 //document.write(anagram('hello world', 'older whlol'));

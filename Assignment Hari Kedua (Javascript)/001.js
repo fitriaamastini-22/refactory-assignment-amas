@@ -13,10 +13,8 @@ function splice(data, idx, val){
 }
 
 const data = new Array(4, 2, 1, 3, 5);
-document.write(sort(data));
+console.log(sort(data));
 
-document.write("<br/>");
-document.write(reverse(data));
+console.log(reverse(data));
 
-document.write("<br/>");
-document.write(splice(data, 3, 6));
+console.log(splice(data, 3, 6));

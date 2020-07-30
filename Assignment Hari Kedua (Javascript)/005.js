@@ -11,6 +11,6 @@ function palindrome(str){
     }
 }
 
-document.write(palindrome("Cigar? Toss it in a can. It is so tragic")); // output true
-document.write("<br/>");
-document.write(palindrome("Hello World")); // output false
+console.log(palindrome("Cigar? Toss it in a can. It is so tragic")); // output true
+
+console.log(palindrome("Hello World")); // output false
