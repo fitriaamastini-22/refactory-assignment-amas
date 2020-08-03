@@ -8,10 +8,10 @@ const convertToAsterisk = (word)  => {
 
 
 const censoringWord = (sentence, bannedWords) => {
-	
-
 	for(let word=0; word < bannedWords.length; word++) {
-	    sentence = sentence.replace(bannedWords[word], convertToAsterisk(bannedWords[word]));
+		let regEx = new RegExp(bannedWords[word], "ig");
+		sentence = sentence.replace(regEx, convertToAsterisk(bannedWords[word]));
+	    // sentence = sentence.replace(bannedWords[word], convertToAsterisk(bannedWords[word]));
 	}
 
 	return sentence;
