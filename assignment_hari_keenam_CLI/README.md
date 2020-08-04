@@ -16,3 +16,7 @@ Cara install: npm install @caporal/core
 
 Untuk menjawab soal di:
 https://gist.github.com/husenEF/8764629208d9a4c4c3194a061dd48e44
+
+Thanks
+
+-Amas-
