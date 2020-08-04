@@ -18,5 +18,6 @@ Edit di package.json dibagian script test = jest
 	  }
 	}
 
+Buka git bash atau command prompt di folder js-testing-challenge
 npm run test
 https://jestjs.io/docs/en/getting-started.html
