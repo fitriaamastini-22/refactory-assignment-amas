@@ -1,0 +1,26 @@
+{
+  "name": "package.json",
+  "jest": {
+    "verbose": true
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jest": "^26.2.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+
+  "author": "",
+  "license": "ISC"
+}

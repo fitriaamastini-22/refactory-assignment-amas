@@ -1,0 +1,22 @@
+Cara install Jest:
+npm install --save-dev jest
+buat package.json: npm init
+tambah sesuai di bawah ini
+https://jestjs.io/docs/en/configuration
+
+Cara install Eslint:
+npm install eslint --save-dev
+Buat package.json: npm init
+npx eslint --init
+https://eslint.org/docs/user-guide/getting-started
+
+Cara Run Unit Testing:
+Edit di package.json dibagian script test = jest
+	{
+	  "scripts": {
+		"test": "jest"
+	  }
+	}
+
+npm run test
+https://jestjs.io/docs/en/getting-started.html
