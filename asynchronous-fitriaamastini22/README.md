@@ -1,6 +1,6 @@
 ===================================================
 
-Jangan lupa untuk menjalankannya menggunakan npm install, 
+Jangan lupa untuk menjalankannya memerlukan npm install terlebih dahulu 
 karena ada package 3rd party yang digunakan:
 1. Axios : sebagai web scraper untuk struktur web statis
 
