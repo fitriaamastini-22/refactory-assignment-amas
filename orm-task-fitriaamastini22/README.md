@@ -27,12 +27,9 @@ karena ada package 3rd party yang digunakan:
 			npx sequelize db:migrate
 		3. Buat Seeder
 			npx sequelize seed:generate --name demo-todo
-
 			buat datanya
-
 			load datanya ke db:
 			npx sequelize db:seed:all
-
 		Sumber: 
 		https://medium.com/extra-integer/install-sequelize-d4125fa34d08
 		https://sequelize.org/master/manual/migrations.html
