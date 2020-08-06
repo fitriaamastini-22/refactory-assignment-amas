@@ -1,0 +1,216 @@
+#!/usr/bin/env node 
+
+const { program } = require("@caporal/core");
+
+const Sequelize = require('sequelize');
+const env = process.env.NODE_ENV || 'development';
+const config = require('./config/config.json')[env];
+const readline = require('readline');
+// const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+// let Todo = sequelize.define('todos', {
+// 	todo_desc: Sequelize.STRING,
+// 	is_completed: Sequelize.BOOLEAN
+// });
+
+// async function getAllRows(){
+// 	const todos = await Todo.findAll({
+//              offset: 5, limit: 5,);
+
+// 	console.log(todos);
+
+// 	sequelize.close();
+// }
+
+program
+.name("todo")
+.command("list","ambil seluruh data di tabel todo")
+.action( ({logger, args}) => {
+	
+	// (async () => {
+	// 	await sequelize.authenticate();
+	// 	const todos = await Todo.findAll();
+	// 	console.log(todos);
+
+	//   	await sequelize.close();
+	// })();
+
+	const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	sequelize.authenticate().then(() => {
+	  	// console.log('Connection established successfully.');
+
+	  	// // getAllRows();
+
+	  	let Todo = sequelize.define('todos', {
+	  		todo_desc: Sequelize.STRING,
+	  		is_completed: Sequelize.BOOLEAN
+	  	});
+
+	  	// let Todo = sequelize.define('todos');
+
+	  	// Todo.findAll({limit: 5,})
+	  	Todo.findAll()
+	  	.then(function (todos) {
+	  		// console.log(todos);
+	  		todos.forEach(todo =>{
+	  			let is_done = (todo.is_completed? "(DONE)":"");
+	  			console.log(`${todo.id}. ${todo.todo_desc} ${is_done}`);
+	  		});
+	  	}).then(()=>{
+	  		sequelize.close();
+	  	});
+	}).catch(err => {
+	  	console.error('Unable to connect to the database:', err);
+	});
+})
+
+.command("add","Tambah data")
+.argument("<text>","Isi deskripsi todo yang anda ingin masukkan")
+.action( ({logger, args}) => {
+	const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	sequelize.authenticate().then(() => {
+		let Todo = sequelize.define('todos', {
+			todo_desc: Sequelize.STRING,
+			is_completed: Sequelize.BOOLEAN
+		});
+
+		const todo = Todo.build({
+			todo_desc: args.text,
+			is_completed: false,
+		});
+
+		todo.save().then(() => {
+			console.log("Berhasil memasukkan");
+			sequelize.close();
+		}).catch(err => {
+		  	console.error('terjadi kesalahan:', err);
+		});
+	}).catch(err => {
+	  	console.error('Unable to connect to the database:', err);
+	});		
+})
+
+.command("update","Update data")
+.argument("<id>","ID todo")
+.argument("<text>","Isi deskripsi todo yang anda ingin masukkan")
+.action( ({logger, args}) => {
+	const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	sequelize.authenticate().then(() => {
+		let Todo = sequelize.define('todos', {
+			todo_desc: Sequelize.STRING,
+			is_completed: Sequelize.BOOLEAN
+		});
+
+		Todo.update(
+			{todo_desc: args.text, updatedAt: new Date()},
+			{where:{ id: args.id }}).then(function (result) {
+			sequelize.close();
+		});
+	}).catch(err => {
+	  	console.error('Unable to connect to the database:', err);
+	});		
+})
+
+.command("del","Delete data")
+.argument("<id>","ID todo")
+.action( ({logger, args}) => {
+	const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	sequelize.authenticate().then(() => {
+		let Todo = sequelize.define('todos', {
+			todo_desc: Sequelize.STRING,
+			is_completed: Sequelize.BOOLEAN
+		});
+
+		Todo.destroy(
+			{where:{ id: args.id }}
+		).then(function (result) {
+			sequelize.close();
+		});
+	}).catch(err => {
+	  	console.error('Unable to connect to the database:', err);
+	});		
+})
+
+.command("clear","Truncate data")
+.action( ({logger, args}) => {
+
+	let rl = readline.createInterface(process.stdin, process.stdout);
+	rl.question("Are you sure want to delete? [y/N] ", function(answer) {
+	        if(answer == "y" || answer == "Y") {
+	            // console.log ("hapus");
+	            const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	            sequelize.authenticate().then(() => {
+	            	let Todo = sequelize.define('todos', {
+	            		todo_desc: Sequelize.STRING,
+	            		is_completed: Sequelize.BOOLEAN
+	            	});
+
+	            	Todo.destroy(
+	            		{where:{}, truncate: true}
+	            	).then(function (result) {
+	            		sequelize.close();
+	            		rl.close();
+	            		process.exit (1);
+	            	});
+	            }).catch(err => {
+	              	console.error('Unable to connect to the database:', err);
+	            });		
+	        }
+	        else if (answer == "n" || answer == "N") {
+	        	// console.log ("Tidak");
+	            // rl.close();
+	            rl.close();
+	            process.exit (1);
+	        }
+	    });//question()
+})
+
+.command("done","Complete todo")
+.argument("<id>","ID todo")
+.action( ({logger, args}) => {
+	const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	sequelize.authenticate().then(() => {
+		let Todo = sequelize.define('todos', {
+			todo_desc: Sequelize.STRING,
+			is_completed: Sequelize.BOOLEAN
+		});
+
+		Todo.update(
+			{is_completed: true, updatedAt: new Date()},
+			{where:{ id: args.id }}).then(function (result) {
+			sequelize.close();
+		});
+	}).catch(err => {
+	  	console.error('Unable to connect to the database:', err);
+	});		
+})
+
+.command("undone","Uncomplete todo")
+.argument("<id>","ID todo")
+.action( ({logger, args}) => {
+	const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+	sequelize.authenticate().then(() => {
+		let Todo = sequelize.define('todos', {
+			todo_desc: Sequelize.STRING,
+			is_completed: Sequelize.BOOLEAN
+		});
+
+		Todo.update(
+			{is_completed: false, updatedAt: new Date()},
+			{where:{ id: args.id }}).then(function (result) {
+			sequelize.close();
+		});
+	}).catch(err => {
+	  	console.error('Unable to connect to the database:', err);
+	});		
+})
+;
+
+program.run();
