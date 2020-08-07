@@ -1,0 +1,284 @@
+extends layout
+
+block content
+	#wrapper
+		header#header
+			.logo
+				span.icon.fa-gem
+			.content
+				.inner
+					h1 #{title}
+					p Programmer, Beginner Data Scientist, Beginner Researcher
+			nav
+				ul
+					li
+						a(href='#about') About
+					li
+						a(href='#education') Education
+					li
+						a(href='#experience') Experience
+					li
+						a(href='#portofolio') Portofolio
+					li
+						a(href='#publication') Publication
+					li
+						a(href='#contact') Contact
+		#main
+			// About
+			article#about
+				h2.major About
+				span.image.main
+					img(src='images/photo_profile.jpg', alt='Photo Profile')
+				p
+					| Hello, my name is Fitria Amastini. My nickname is Amas. I graduated from Informatics Undergraduate Program, Universitas Multimedia Nusantara  on November 2015.
+					| Soon, I will graduate from Information Technology Master Program, Universitas Indonesia on August 2020 (Bismillah).
+				p
+					| Currently, my main interests are academic research on computer science and information systems fields, and programming.
+				p
+					| My mainly programming languages used in current job are PHP (using Laravel Framework, and Moodle LMS Framework), HTML5, CSS, and Javascript
+				p
+					| Other programming languages are Python (Anaconda) for data science, Java, Android, C (C++, C#).
+				p
+					| Next target to be learn: ReactJS, Go Lang, Microservices, Augmented Reality, Kotlin.
+				p
+				p My other  are PHP (using Laravel Framework), and Javascript
+				p
+					| I'm always challenge myself to become a problem solver, knowledge/wisdom seeker, and analytical thinker.
+				blockquote
+					| “To attain knowledge, add things everyday. To attain wisdom, remove things every day.”
+					br
+					| ― Lao Tse
+				p
+					| My hobbies are reading book, drawing, watching anime, listening music, cooking, swimming, and writing stories.
+				p
+					| Currently reading about disruption business model, corporate startup, agile framework (scrum, kanban, XP programming), automated testing.
+				p
+					| My favorite songs are from Hypnosis Mic and Paradox Live (Hip-hop Genre), K-Pop, 48/46 Group Family, Love Live, Kalafina
+				.table-wrapper
+					table
+						tbody
+							tr
+								td Name
+								td :
+								td Fitria Amastini
+							tr
+								td Age
+								td :
+								td 26 years old
+							tr
+								td Country
+								td :
+								td Indonesia
+							tr
+								td Main Language
+								td :
+								td Indonesia
+							tr
+								td Other Language
+								td :
+								td English, Japanese (Limited working proficiency)
+							tr
+								td Location
+								td :
+								td Pamulang, Tangerang Selatan
+							tr
+								td Email
+								td :
+								td amastini22@gmail.com
+
+			article#education
+				h2.major Education
+				ul.alt
+					li
+						h4 Universitas Indonesia
+						| 											Master's Degree, Information Technology 
+						br
+						| 											2018 -
+					li
+						h4 Universitas Multimedia Nusantara
+						| 											Bachelor's Degree, Computer Science 
+						br
+						| 											2011 - 2015
+
+			article#experience
+				h2.major Experience
+				ul.alt
+					li
+						h4 ICT Staff
+						| 											Universitas Terbuka 
+						br
+						| 											January 2016 - Present (4 Years 7 Months)
+					li
+						h4 Third Party Outsourcing
+						| 											Bank Mandiri 
+						br
+						| 											Doing Project Oracle Data Warehouse and Business Intelligence, Create Star Schema and Data Reporting
+						| 											Juni 2015 - August 2015 (1.5 Months)
+
+			article#portofolio
+				h2.major Portofolio
+				.table-wrapper
+					table
+						thead
+							tr
+								th Project Name
+								th Description
+								th Year
+						tbody
+							tr
+								td Mall Directory Application
+								td
+									| This is my project for Pemrograman Lanjutan 2 Course when Undergraduate Program using C# programming language.
+									br
+									| 												Features:
+									ul
+										li Show Tenant Information from Map Image
+										li Create Tenant Information with Image Position
+										li Voice Searching
+								td 2013
+							tr
+								td Item Analysis UT
+								td
+									| This is my internship essay in Undergraduate Program using PHP programming language. when I was working as ICT Staff in UT, I resumed this project and recreated it using Laravel PHP Framework
+								td 2014, 2016 -
+							tr
+								td D20an UT
+								td
+									| This is my internship essay in Undergraduate Program using Mysql procedure. when I was working as ICT Staff in UT, I resumed this project and recreated it using Laravel PHP Framework
+								td 2014, 2016 -
+							tr
+								td Pengamanan Dokumen Digital
+								td
+									| This is my internship essay in Undergraduate Program using Java.
+								td 2014
+							tr
+								td Simulasi Kuis Anatomi Bunga
+								td
+									| This is my internship essay in Undergraduate Program using Adobe Flash CS6.
+								td 2014
+							tr
+								td Simulasi Permainan Rumus Bunga
+								td
+									| This is my internship essay in Undergraduate Program using Adobe Flash CS6.
+								td 2014
+							tr
+								td Adaptive Testing Systems
+								td
+									| This is my final essay in Undergraduate Program.
+									br
+									| 												Features:
+									li Take adaptive test (using item response theory method)
+								td 2015
+							tr
+								td SRS4G UT
+								td
+									| My current work, mainly using Laravel PHP Framework
+									br
+									| 												Features:
+									li Authentication (Login, Logout, Register, Forgot Password, Dashboard Application)
+									li Middleware for authorization rule
+									li Dynamic Menu and Authorization
+									li Currently on D20an registration module, pengujian/PHU module
+									li Cron job and Background Process
+								td 2016 - 
+							tr
+								td Elearning UT
+								td
+									| My current work, Moodle LMS Framework
+									br
+									| 												Features:
+									li User Registration (and automatically create password)
+								td 2018 - 
+
+			article#publication
+				h2.major Publication
+				.table-wrapper
+					table
+						thead
+							tr
+								th Paper Name
+								th Description
+								th Year
+						tbody
+							tr
+								td Optimasi Pencarian Jalur dengan Metode A-Star
+								td
+									| High level of traffic density can lead to traffic jam those will make troublesome for driver to reach destination with alternative shortest path on time. Therefore, it is neccessary to make an agent that can choose optimal route without being stuck on traffic jam. In this paper, algorithm for choose optimal route is A* method for shortest path problem and use backtrack process when there is a traffic jam occurs on several roads. The design of algorithm is tested by using data which contain 100 locations or nodes and 158 roads or paths in Gading Serpong with an agent that can searching shortest path and sensor module that can send the traffic status based on number of vehicle on several particular node. Based on testing, A* method does not guarantee for path selection if agent is not full observable with environment and there is some case that can lead a worst case.
+									br
+									a(href='http://ejournals.umn.ac.id/index.php/TI/article/view/319/285') Link
+								td 2013
+							tr
+								td Intelligent Tutoring System
+								td
+									| Intelligent Tutoring System is a tutor behaviour system  which can be used as an alternative goal for interactive e-learning and distant learning. This system can provide an adaptive system to support student’s learning and retention process based on their characteristic and needed. There are development method such as bayesian network, and neural network that can build fundamental component of Intelligent Tutoring System. This paper will give some concepts and examples for implementing those method from other papers. 
+									br
+									a(href='http://ejournals.umn.ac.id/index.php/SI/article/view/212/184') Link
+								td 2014
+							tr
+								td
+									| Rancang bangun tes adaptif terkomputerisasi menggunakan pemodelan item response theory
+								td
+									a(href='http://kc.umn.ac.id/1672/') Link
+								td 2015
+							tr
+								td
+									| Data Protection Evaluation On Student Academic Information System Universitas Terbuka
+								td
+									| ICCED 2019, Soon Published in IEEE as Conference Publishing
+								td 2019
+							tr
+								td
+									| Collaborative Learning in Virtual Learning Environment using Social Network Analysis. Case study: Universitas Terbuka
+								td
+									| Soon...
+								td Soon....
+							tr
+								td
+									| Early Detection Student At-Risk Failure Based On Data Students Information System and Tutorial Online Activities. Case study: Universitas Terbuka
+								td
+									| Soon...
+								td Soon....
+							tr
+								td
+									| Sentiment Analysis of Indonesia’s Planned E-Cigarettes Regulation Discussion on Twitter
+								td
+									| Soon...
+								td Soon....
+							tr
+								td IT Governance on InsurTech: Case Study PT AJ Central Asia Raya
+								td
+									| Soon...
+								td Soon....
+
+			article#contact
+				h2.major Contact
+				form(method='post', action='#')
+					.fields
+						.field.half
+							label(for='name') Name
+							input#name(type='text', name='name')
+						.field.half
+							label(for='email') Email
+							input#email(type='text', name='email')
+						.field
+							label(for='message') Message
+							textarea#message(name='message', rows='4')
+					ul.actions
+						li
+							input.primary(type='submit', value='Send Message')
+						li
+							input(type='reset', value='Reset')
+				ul.icons
+					li
+						a.icon.brands.fa-twitter(href='#')
+							span.label Twitter
+					li
+						a.icon.brands.fa-facebook-f(href='#')
+							span.label Facebook
+					li
+						a.icon.brands.fa-instagram(href='#')
+							span.label Instagram
+					li
+						a.icon.brands.fa-github(href='#')
+							span.label GitHub
+
