@@ -1,6 +1,8 @@
+var jwt = require('jsonwebtoken');
 const db = require("../models/index");
 const Order = db.orders; 
 const Op = db.Sequelize.Op;
+const secret_jwt = 'TEXT SECRET LETAK KAN DI ENV';
 
 //order 
 exports.create = (req,res) => {
@@ -15,12 +17,15 @@ exports.create = (req,res) => {
 		return;
 	}
 
+	var user = ( jwt.verify(req.headers.token, secret_jwt) );
+
 	//Create Order
 	const order = {
 		nama_kegiatan: req.body.nama_kegiatan,
 		tanggal: req.body.tanggal,
 		harga: req.body.harga,
 		struk: "-", 
+		user_id: user.id,
 	}
 
 	Order.create(order)
@@ -89,9 +94,11 @@ exports.uploadImageOrder = async (req,res) => {
 
 //retrieve all 
 exports.findAll = (req,res) => {
+	var user = ( jwt.verify(req.headers.token, secret_jwt) );
+
 	const tanggal = req.query.tanggal;
 
-	let condition = tanggal? { tanggal: { [Op.like]: `%${tanggal}%` } } : null;
+	let condition = tanggal? { tanggal: { [Op.like]: `%${tanggal}%` }, id:user.id } : null;
 
 	Order.findAll({where: condition})
 		.then((data) => {
@@ -108,13 +115,14 @@ exports.editorder = async (req,res) => {
 	const nama_kegiatan = req.body.nama_kegiatan;
 	const tanggal = req.body.tanggal;
 	const harga = req.body.harga;
+	var user = ( jwt.verify(req.headers.token, secret_jwt) );
 
 	Order.update({
 		nama_kegiatan: nama_kegiatan,
 		tanggal: tanggal,
 		harga: harga,
 	}, {
-		where: {id:id}
+		where: {id:id, user_id: user.id }
 	}).then( (result) => {
 		if(result == 1){
 			//send response

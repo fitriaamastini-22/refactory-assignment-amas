@@ -12,6 +12,9 @@ module.exports = (sequelize, Sequelize) =>{
 		struk:{
 			type: Sequelize.STRING
 		},
+		user_id:{
+			type: Sequelize.INTEGER
+		},
 
 	});
 	return Order;
