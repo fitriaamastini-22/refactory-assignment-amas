@@ -1,0 +1,30 @@
+{
+  "name": "tryout_refactory",
+  "version": "1.0.0",
+  "description": "Nama: Fitria Amastini\r Jawaban Tugas dari: https://gist.github.com/cahyo-dr/d95340e4bc4ae6994c73bfe4d06215ab (Tahap 2 Saja)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.23.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.10",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "kue": "^0.11.6",
+    "lodash": "^4.17.19",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.11",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0"
+  }
+}
