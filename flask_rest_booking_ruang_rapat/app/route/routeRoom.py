@@ -8,10 +8,9 @@ def rooms():
         return roomController.index()
     else:
         return roomController.store()
-
-@app.route('/users/',methods=['PUT','GET','DELETE'])
-@app.route('/users/<id>',methods=['PUT','GET','DELETE'])
-def roomsDetail(id=0):
+        
+@app.route('/rooms/<id>',methods=['PUT','GET','DELETE'])
+def roomsDetail(id):
     if request.method == 'GET':
         return roomController.show(id)
     elif request.method == 'PUT':

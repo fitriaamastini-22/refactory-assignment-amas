@@ -14,8 +14,10 @@ def index():
 
     try:
         print(get_jwt_identity())
+        #{'id': 1, 'name': 'Fitria Amastini', 'email': 'amas@ecampus.ut.ac.id', 'role': 'admin', 'department': 'IT'}
         user_token = get_jwt_identity()
         print(user_token)
+        #{'id': 1, 'name': 'Fitria Amastini', 'email': 'amas@ecampus.ut.ac.id', 'role': 'admin', 'department': 'IT'}
         for key,value in user_token.items():
             print(f"{key} : {value}")
 
@@ -26,14 +28,14 @@ def index():
     except Exception as e:
         print(e)
 
-
+@jwt_required
 def show(id):
     try:
         users = Users.query.filter_by(id=id).first()
         if not users:
             return response.badRequest([], 'Empty....')
 
-        data = singleTransform(users,withBooking=False)
+        data = singleTransform(users,withBooking=True)
         return response.ok(data, "")
     except Exception as e:
         print(e)
@@ -120,7 +122,7 @@ def update(id):
     except Exception as e:
         print(e)
 
-
+@jwt_required
 def delete(id):
     try:
         user = Users.query.filter_by(id=id).first()

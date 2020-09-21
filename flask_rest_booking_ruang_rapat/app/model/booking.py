@@ -13,11 +13,11 @@ class Bookings(db.Model):
     booking_date = db.Column(db.Date, nullable=False)
     booking_time_start = db.Column(db.Time, nullable=False)
     booking_time_end = db.Column(db.Time, nullable=False)
-    extra_information = db.Column(db.Time, nullable=False)
+    extra_information = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(250), nullable=False) #reserved #finished #cancel
 
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
-        return '<Booking {}>'.format(self.booking_date)
+        return '<Booking {}>'.format(self.id)
