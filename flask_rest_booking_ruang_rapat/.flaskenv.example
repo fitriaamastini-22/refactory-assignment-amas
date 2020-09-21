@@ -1,0 +1,14 @@
+FLASK_APP = main.py
+FLASK_DEBUG = 1
+
+DB_HOST = localhost
+DB_DATABASE = booking_ruang_rapat
+DB_USERNAME = root
+DB_PASSWORD =
+
+JWT_SECRET=INISECRET
+
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=
+MAIL_PASSWORD=

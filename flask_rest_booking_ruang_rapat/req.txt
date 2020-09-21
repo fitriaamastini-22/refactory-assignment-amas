@@ -1,0 +1,15 @@
+flask
+python-dotenv 
+flask-sqlalchemy
+flask-migrate
+pymysql
+Flask-Seeder
+jinja2
+flask-jwt-extended
+
+Flask-Mail
+apscheduler
+
+redis
+rq
+Flask-RQ2
