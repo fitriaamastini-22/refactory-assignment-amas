@@ -1,0 +1,8 @@
+flask
+python-dotenv 
+flask-sqlalchemy
+flask-migrate
+pymysql
+Flask-Seeder
+jinja2
+flask-jwt-extended
