@@ -13,4 +13,4 @@ class Customers(db.Model):
     updated_at   = db.Column(db.DateTime,default=datetime.utcnow)
 
 def __repr__(self):
-        return '<Customer {}>'.format(self.payment_type)
+        return '<Customer {}>'.format(self.username)
