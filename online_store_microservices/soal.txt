@@ -1,0 +1,435 @@
+# Online Store  Microservices
+
+[Schema Table](https://dbdiagram.io/d/5e78068d4495b02c3b889be7)
+
+
+## Group 1 
+
+- Fitria Amastini
+- Muhammad Rijalul
+- Suparman
+- Abrama Syahari
+
+## Group 2
+
+- Agung Wicaksono
+- Aditya Fajar Anugrah
+- Deni Rudiana Aprizal
+- Irfan jafar
+
+## Group 3
+- Sonasa Rinusantoro
+- Muhammad Dzakiy
+- Taufan Nanda
+
+
+## Description
+- Customer have ability to make order
+- Customer have ability to make payment process 
+- Customer get email notification when make payment 
+- Customer get push notification when payment succeed
+- Payment Service integrated with midtrans 
+- Notification Service integrated with FCM
+- We can register Customer   
+- Product Service is public api
+- Each Mearchant have  many Product  
+
+
+## REST SERVICE
+
+### Customer Microservices
+
+| Methods | Path        | Param | Description           |
+|---------|-------------|-------|-----------------------|
+| POST    | /customer   |       | Create Customer       |
+| PUT     | /customer/1 | id    | Update Customer Data  |
+| DELETE  | /customer/1 | id    | Delete Customer Data  |
+| GET     | /customer/1 | id    | Get Customer By Id    |
+| GET     | /customer   |       | Get All Customer Data |
+
+
+This is example request for create and get all customer data
+
+POST /customer Request
+```json
+{
+    "data": {
+        "attributes": {
+            "full_name": "johny",
+            "username":"doe",
+            "email":"john@doe.com",
+            "phone_number":"0812345689",
+            "gender":"male"
+        }
+    }
+}
+```
+
+GET /customer Response 
+```json
+{
+    "message":"success retrieve data",
+    "status": true,
+    "data": [
+        {   "id":1,
+            "full_name": "johny",
+            "username":"doe",
+            "email":"john@doe.com",
+            "phone_number":"0812345689",
+            "gender":"male"
+        },
+        {   "id":2,
+            "full_name": "johny",
+            "username":"doe",
+            "email":"john@doe.com",
+            "phone_number":"0812345689",
+            "gender":"male"
+        }
+    ]
+}    
+```
+
+Customer Validation 
+
+- username can't be empty with message "username can't be empty"
+- username max lenght 20 with message "max username lenght is 20"
+- email can't be empty  with message "email can't be empty "
+- email type is email  with messaage "email is not valid email address"
+- gender is one of male and female with message "gender is one of male or female"
+- gender can't be empty "gender can't be empty"
+- bithdate can't be empty with message "birhdate can't be empty"
+- birthdate must be greater than 18 years with message "age must be greater than 18"
+
+
+### Product Microservices
+
+| Methods | Path        | Param | Description          |
+|---------|-------------|-------|----------------------|
+| POST    | /product    |       | Create Product       |
+| PUT     | /prooduct/1 | id    | Update Product Data  |
+| DELETE  | /product/1  | id    | Delete Product Data  |
+| GET     | /product/1  | id    | Get Product By Id    |
+| GET     | /product    |       | Get All Product Data |
+
+
+POST /product Request
+```json
+{
+  "data": {
+    "attributes": {
+        "name": "apple",
+        "price": 100000,
+    }
+  }
+}
+```
+
+Product Validation 
+
+- name can't be empty with message "name can't be empty"
+- max name length is 50 with message "max name lenght is 50"
+- price can't be empty with message "price can't be empty"
+- price must be greater than 1000 with message "price must be greater than 1000"
+
+
+### Merchant Microservices
+
+| Methods | Path      | Param | Description               |
+|---------|-----------|-------|---------------------------|
+| POST    | /merchant |       | Add Merchant method       |
+| PUT     | /merchant | id    | Update Merchant method    |
+| DELETE  | /merchant | id    | Delete Merchant method    |
+| GET     | /merchant | id    | Get Merchant method By Id |
+| GET     | /merchant |       | Get All Merchant          |
+
+
+This is example request for create and get all merchant method
+
+POST /merchant Request
+```json
+{
+    "data": {
+        "attributes": {
+            "name": "johny",
+            "image": "https://gambarok.com/hello.jpg",
+            "address": "Bandung Jawa Barat",
+            "rating": 5,
+        }
+    }
+}
+```
+
+GET /merchant
+```json
+{   
+    "message":"success retrieve data",
+    "status": true,  
+    "data": [
+         {
+            "name": "johny",
+            "image": "https://gambarok.com/hello.jpg",
+            "address": "Bandung Jawa Barat",
+            "rating": 5,
+        },
+        {
+            "name": "johny",
+            "image": "https://gambarok.com/hello.jpg",
+            "address": "Bandung Jawa Barat",
+            "rating": 5,
+        }
+    ]
+}
+```
+
+Merchant Validation 
+
+- name can't be empty with message "name_on_card can't be empty"
+- address can't be empty with message "address can't be empty"
+- rating must be between 1 - 5 with message "exp_month is bettween 1-5"
+
+
+### Order Microservices
+
+
+| Methods | Path     | Param | Description        |
+|---------|----------|-------|--------------------|
+| POST    | /order   |       | Create Order       |
+| PUT     | /order/1 | id    | Update Order Data  |
+| DELETE  | /order/1 | id    | Delete Order Data  |
+| GET     | /order/1 | id    | Get Order By Id    |
+| GET     | /order   |       | Get All Order Data |
+
+example order request when create order it make status to be `created`
+
+POST /order Request
+```json
+  {
+  "data": {
+    "attributes": {
+        "order_detail": [
+            {
+                "product_id": 1,
+                "quantity": 1
+            },
+            {
+                "product_id": 2,
+                "quantity": 2
+            }
+        ]
+    }
+  }
+}
+```
+
+PUT /order/1 Request
+
+```json
+{
+    "data": {
+        "attributes":{
+            "status": "accepted"
+        }
+    }
+}
+```
+
+Merchant Validation 
+
+- name can't be empty with message "name_on_card can't be empty"
+- address can't be empty with message "address can't be empty"
+- rating must be between 1 - 5 with message "exp_month is bettween 1-5"
+
+
+
+### Payment Microservices
+
+| Methods | Path                   | Param | Description                                     |
+| ------- | ---------------------- | ----- | ----------------------------------------------- |
+| POST    | /payment               |       | Create Payment                                  |
+| PUT     | /payment/1             | id    | Update Payment                                  |
+| DELETE  | /payment/1             | id    | Delete Payment                                  |
+| GET     | /payment/1             | id    | Get Payment by ID                               |
+| GET     | /payment               |       | Get All created Payment                         |
+| POST    | /payment/midtrans/push |       | Receive payment status update from midtrans api |
+
+example order request when create order it make status to be `created`
+
+POST /payment Request
+
+- `order_id` is from order service, you can mock this id with your custom id (Order Service not required now)
+
+```json
+{
+  "data": {
+    "attributes": {
+    "payment_type": "bank_transfer",
+    "gross_amount": 20000,
+    "bank": "bni",
+    "order_id": 1
+    }
+  }
+}
+```
+
+GET /payment Response
+
+```json
+
+{
+    "message": "Payment successfully retreived",
+    "success": true,
+    "data": [
+        {
+            "order_id":  1,
+            "transaction_id":  "be03df7d-2f97-4c8c-a53c-8959f1b67295",
+            "payment_type":  "bank_transfer",
+            "gross_amount":  10000,
+            "transaction_time":  "2019-10-23 16:33:49",
+            "transaction_status":  "pending",
+        },
+        {
+            "order_id":  2,
+            "transaction_id":  "2194a77c-a412-4fd8-8ec8-121ff64fbfee",
+            "payment_type":  "bank_transfer",
+            "gross_amount":  10000,
+            "transaction_time":  "2019-10-23 16:33:49",
+            "transaction_status":  "pending",
+        }
+    ]
+}
+
+```
+
+### Notification Microservice
+
+| Methods | Path            | Param | Description                 |
+| ------- | --------------- | ----- | --------------------------- |
+| POST    | /notification   |       | Create Notification         |
+| PUT     | /notification/1 | id    | Update Notification Read At |
+| DELETE  | /notification/1 | id    | Delete Notification         |
+| GET     | /notification/1 | id    | Get Notification By Id      |
+| GET     | /notification   |       | Get All Notification        |
+
+
+POST /notification
+
+```json
+{
+  "data": {
+    "attributes": {
+      "title": "hello",
+      "message": "this is message body",
+      "type": "email",
+      "from": 123456,
+      "targets": [
+        {
+          "id": 1234567,
+          "email_destination": "test@test.com"
+        },
+        {
+          "id": 12345678,
+          "email_destination": "test2@test.com"
+        }
+      ]
+    }
+  }
+}
+```
+
+GET /noitification
+
+- Get notification have `read_count` key which showing not null `read_at` notification_logs
+- Get notification have `count` key which showing all notification 
+- If notification have params ?include=logs it will show notification logs like bellow if not any params it will show only notifications data without `notification_logs`
+- 
+
+```json
+{
+  "message": "Notification successfully retreived",
+  "success": true,
+  "data": {
+    "total": 2, 
+    "read_count": 1,
+    "notifications": [
+      {
+        "id": 1,
+        "title": "hello",
+        "message": "world"
+      }
+    ],
+    "notification_logs": [
+      {
+        "notification_id": 1,
+        "from": 123456,
+        "read_at": "2020-03-16 10:00:00",
+        "target": 1234567
+      },
+      {
+        "notification_id": 1,
+        "from": 123456,
+        "read_at": null,
+        "target": 12345678
+      }
+    ]
+  }
+}
+```
+
+## Task
+
+1. Submit all git repository 
+2. Create Payment Services
+   - Create Database named payments
+   - Create migration
+3. [Integrate Payment Service with Midtrans](https://docs.midtrans.com/en/core_api/integration_bank_transfer.html)
+   - Integrate Payment Service with Bank transfer option for payment method
+   - Handling payment with `bni` and `bca` as bank transfer
+4. Create webhook url to catch `transaction_status` change from midtrans
+5. Queue integration for Payment Service
+   - Triger email notification to user when user make payment request
+   - Triger push notification when payment has successfully paid
+   - Request to notification service using to create notification
+
+6. Create Each Microservice database and migration
+   - Create Database `order`, `payment`, `notification`, `customer`, `product`, `merchant`  
+   - Create migration
+
+7. Integrating Notification with FCM and mail 
+   - [Integrate push notification with FCM](https://firebase.google.com/docs/cloud-messaging/send-message)
+   - [Integrate mail notification](https://mailtrap.io/)
+   
+8. Queue Integration for Notification Service
+   - All notification will send to queue first before sending to FCM 
+   - create notification with Queue implementation 
+   - if `targets_email_destination` empty it will only send push notification if present it will send both email and push notification
+
+```json
+{
+  "data": {
+    "attributes": {
+      "title": "hello",
+      "message": "this is message body",
+      "type": "email",
+      "from": 123456,
+      "targets": [
+        {
+          "id": 1234567,
+          "email_destination": "test@test.com"
+        },
+        {
+          "id": 12345678,
+          "email_destination": "test2@test.com"
+        }
+      ]
+    }
+  }
+}
+``` 
+
+9. Dockerize each microservices and push to docker-hub with name `docker-username/payment-microservice`, `docker-username/notification-microservice`, `docker-username/customer-microservice`, `docker-username/product-microservice`, `docker-username/merchant-microservice`, `docker-username/order-microservice`,   
+
+10.  Deploy with kubernetes
+
+11. Create UI to make order process 
+
+12. Create UI to display all order on Admin Panel 
